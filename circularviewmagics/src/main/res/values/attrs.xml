@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularViewMagics">
+        <attr name="roundedCorners" format="boolean"/>
+        <attr name="roundedPercentage" format="integer"/>
+        <attr name="roundedPercentageTopLeft" format="integer"/>
+        <attr name="roundedPercentageTopRight" format="integer"/>
+        <attr name="roundedPercentageBottomLeft" format="integer"/>
+        <attr name="roundedPercentageBottomRight" format="integer"/>
+        <attr name="circularPadding" format="dimension"/>
+        <attr name="circularPaddingLeft" format="dimension"/>
+        <attr name="circularPaddingRight" format="dimension"/>
+        <attr name="circularPaddingTop" format="dimension"/>
+        <attr name="circularPaddingBottom" format="dimension"/>
+
+    </declare-styleable>
+</resources>
