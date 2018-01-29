@@ -2,16 +2,15 @@
 <resources>
     <declare-styleable name="CircularViewMagics">
         <attr name="roundedCorners" format="boolean"/>
-        <attr name="roundedPercentage" format="integer"/>
-        <attr name="roundedPercentageTopLeft" format="integer"/>
-        <attr name="roundedPercentageTopRight" format="integer"/>
-        <attr name="roundedPercentageBottomLeft" format="integer"/>
-        <attr name="roundedPercentageBottomRight" format="integer"/>
-        <attr name="circularPadding" format="dimension"/>
-        <attr name="circularPaddingLeft" format="dimension"/>
-        <attr name="circularPaddingRight" format="dimension"/>
-        <attr name="circularPaddingTop" format="dimension"/>
-        <attr name="circularPaddingBottom" format="dimension"/>
-
+        <attr name="radiusAllCorners" format="float"/>
+        <attr name="radiusTopLeft" format="float"/>
+        <attr name="radiusTopRight" format="float"/>
+        <attr name="radiusBottomLeft" format="float"/>
+        <attr name="radiusBottomRight" format="float"/>
+        <attr name="innerShadow" format="boolean"/>
+        <attr name="outerRing" format="boolean"/>
+        <attr name="outerRingStroke" format="dimension"/>
+        <attr name="outerRingColor" format="color"/>
+        <attr name="outerRingAlpha" format="float"/>
     </declare-styleable>
 </resources>
