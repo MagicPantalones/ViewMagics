@@ -4,27 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.magics.viewmagics.MainActivity">
+    tools:context="io.magics.viewmagics.MainActivity"
+    android:background="@android:color/holo_red_dark">
 
-    <io.magics.circularviewmagics.CircularViewMagics
-        android:id="@+id/roundedCorners"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"
-        app:roundedCorners="true" />
 
     <io.magics.circularviewmagics.CircularViewMagics
         android:id="@+id/circle"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/a28543678"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:viewShape="Circle"
+        app:outerRingEnabled="true"
+        app:outerRingColor="@android:color/tertiary_text_dark"
+        app:outerRingStroke="3dp" />
+
+
+    <io.magics.circularviewmagics.CircularViewMagics
+        android:id="@+id/rounded"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundedCorners" />
+        app:layout_constraintTop_toBottomOf="@+id/circle"
+        android:src="@drawable/a28543678"
+        app:outerRingEnabled="true"
+        app:outerRingStroke="3dp"
+        app:outerRingColor="@android:color/tertiary_text_dark"
+        app:bottomCornersRadius="5dp"
+        app:topCornersRadius="5dp"
+        app:viewShape="Rectangle"
+        />
 
 </android.support.constraint.ConstraintLayout>
