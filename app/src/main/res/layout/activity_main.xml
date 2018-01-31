@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="io.magics.viewmagics.MainActivity"
-    android:background="@android:color/holo_red_dark">
+    android:background="@color/colorPrimaryDark">
 
 
     <io.magics.circularviewmagics.CircularViewMagics
@@ -18,8 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:viewShape="Circle"
-        app:outerRingEnabled="true"
-        app:outerRingColor="@android:color/tertiary_text_dark"
+        app:outerRingEnabled="false"
+        app:outerRingColor="@color/colorAccent"
         app:outerRingStroke="3dp" />
 
 
@@ -32,11 +32,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circle"
         android:src="@drawable/a28543678"
-        app:outerRingEnabled="true"
-        app:outerRingStroke="3dp"
-        app:outerRingColor="@android:color/tertiary_text_dark"
-        app:bottomCornersRadius="5dp"
-        app:topCornersRadius="5dp"
+        app:outerRingEnabled="false"
+        app:outerRingStroke="1dp"
+        app:outerRingColor="@color/colorAccent"
+        app:bottomCornersRadius="20dp"
+        app:topCornersRadius="20dp"
         app:viewShape="Rectangle"
         />
 
