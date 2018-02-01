@@ -5,39 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="io.magics.viewmagics.MainActivity"
-    android:background="@android:color/holo_red_dark">
+    android:background="@color/colorPrimaryDark"
+    android:padding="16dp">
 
+    <io.magics.textviewmagics.TextViewMagics
+        android:id="@+id/helloworld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lobster"
+        android:text="@string/hello_world"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <io.magics.circularviewmagics.CircularViewMagics
         android:id="@+id/circle"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/a28543678"
-        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:viewShape="Circle"
-        app:outerRingEnabled="true"
-        app:outerRingColor="@android:color/tertiary_text_dark"
-        app:outerRingStroke="3dp" />
+        app:layout_constraintTop_toBottomOf="@+id/helloworld"
+        app:outerRingColor="@color/colorAccent"
+        app:outerRingEnabled="false"
+        app:outerRingStroke="3dp"
+        app:viewShape="Circle" />
 
 
     <io.magics.circularviewmagics.CircularViewMagics
         android:id="@+id/rounded"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:src="@drawable/a28543678"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circle"
-        android:src="@drawable/a28543678"
-        app:outerRingEnabled="true"
-        app:outerRingStroke="3dp"
-        app:outerRingColor="@android:color/tertiary_text_dark"
-        app:bottomCornersRadius="5dp"
-        app:topCornersRadius="5dp"
-        app:viewShape="Rectangle"
-        />
+        app:outerRingColor="@color/colorAccent"
+        app:outerRingEnabled="false"
+        app:outerRingStroke="1dp"
+        app:viewShape="Rectangle" />
 
 </android.support.constraint.ConstraintLayout>

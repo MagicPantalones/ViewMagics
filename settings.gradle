@@ -1,1 +1,1 @@
-include ':app', ':circularviewmagics'
+include ':app', ':circularviewmagics', ':textviewmagics'

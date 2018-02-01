@@ -11,7 +11,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -33,8 +32,7 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
 
     private String wantedShape;
     private int shape;
-    private float topCornerRadius;
-    private float bottomCornerRadius;
+    private float cornerRadius;
     private boolean outerCircleEnabled;
     private int outerCircleColor;
     private float outerCircleStroke;
@@ -69,9 +67,8 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
             wantedShape = a.getString(R.styleable.CircularViewMagics_viewShape);
             outerCircleEnabled = a.getBoolean(R.styleable.CircularViewMagics_outerRingEnabled, false);
             outerCircleColor = a.getColor(R.styleable.CircularViewMagics_outerRingColor, getContext().getResources().getColor(android.R.color.white));
-            outerCircleStroke = a.getDimension(R.styleable.CircularViewMagics_outerRingStroke, 1.0f);
-            topCornerRadius = a.getDimension(R.styleable.CircularViewMagics_topCornersRadius, 50.0f);
-            bottomCornerRadius = a.getDimension(R.styleable.CircularViewMagics_bottomCornersRadius, 50.0f);
+            outerCircleStroke = a.getDimension(R.styleable.CircularViewMagics_outerRingStroke, 0.0f);
+            cornerRadius = a.getDimension(R.styleable.CircularViewMagics_cornerRadius, 50.0f);
         }
         finally {
             a.recycle();
@@ -98,8 +95,13 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
         }
 
         clipPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
         outerRingPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        outerRingPaint.setColor(outerCircleColor);
+        if (!outerCircleEnabled) {
+            outerRingPaint.setColor(0xff100101);
+        } else {
+            outerRingPaint.setColor(outerCircleColor);
+        }
 
         setDefaultVals();
 
@@ -126,7 +128,7 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
                 float centerY = canvas.getHeight() / 2;
 
                 if (shape == VIEW_RECTANGLE) {
-                    canvas.drawRoundRect(viewBounds, topCornerRadius, bottomCornerRadius, outerRingPaint);
+                    canvas.drawRoundRect(viewBounds, cornerRadius, cornerRadius, outerRingPaint);
                 } else {
                     canvas.drawCircle(centerX, centerY, canvas.getHeight(), outerRingPaint);
                 }
@@ -155,26 +157,21 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
         int screenWidth = MeasureSpec.getSize(widthMeasureSpec);
         int screenHeight = MeasureSpec.getSize(heightMeasureSpec);
 
-        if (outerCircleEnabled) {
-            outerCircleRect.set(0, 0, screenWidth, screenHeight);
-            viewBounds.set(outerCircleStroke, outerCircleStroke, screenWidth - outerCircleStroke, screenHeight - outerCircleStroke);
-        } else
-            viewBounds.set(0, 0, screenWidth,screenHeight);
+        outerCircleRect.set(0, 0, screenWidth, screenHeight);
+        viewBounds.set(outerCircleStroke, outerCircleStroke, screenWidth - outerCircleStroke, screenHeight - outerCircleStroke);
     }
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {
 
         if (shape == VIEW_RECTANGLE) {
-            if (outerCircleEnabled) {
-                canvas.drawRoundRect(outerCircleRect, topCornerRadius, bottomCornerRadius, outerRingPaint);
-            }
-            canvas.drawRoundRect(viewBounds, topCornerRadius, bottomCornerRadius, clipPaint);
-            clipPath.addRoundRect(viewBounds, topCornerRadius, bottomCornerRadius, Path.Direction.CW);
+            canvas.drawRoundRect(outerCircleRect, cornerRadius, cornerRadius, outerRingPaint);
+            canvas.drawRoundRect(viewBounds, cornerRadius, cornerRadius, clipPaint);
+            clipPath.addRoundRect(viewBounds, cornerRadius, cornerRadius, Path.Direction.CW);
         } else {
-            if (outerCircleEnabled) {
-                canvas.drawCircle(outerCircleRect.centerX(), outerCircleRect.centerY(), (outerCircleRect.height() / 2), outerRingPaint);
-            }
+            canvas.drawCircle(outerCircleRect.centerX(), outerCircleRect.centerY(), (outerCircleRect.height() / 2), outerRingPaint);
             canvas.drawCircle(viewBounds.centerX(), viewBounds.centerY(), (viewBounds.height() / 2), clipPaint);
             clipPath.addCircle(viewBounds.centerX(), viewBounds.centerY(), (viewBounds.height() / 2), Path.Direction.CW);
         }

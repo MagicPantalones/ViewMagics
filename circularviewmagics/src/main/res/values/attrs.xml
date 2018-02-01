@@ -5,8 +5,7 @@
             <enum name="Circle" value="420"/>
             <enum name="Rectangle" value="421"/>
         </attr>
-        <attr name="topCornersRadius" format="dimension"/>
-        <attr name="bottomCornersRadius" format="dimension" />
+        <attr name="cornerRadius" format="dimension"/>
         <attr name="outerRingEnabled" format="boolean"/>
         <attr name="outerRingColor" format="color"/>
         <attr name="outerRingStroke" format="dimension"/>
