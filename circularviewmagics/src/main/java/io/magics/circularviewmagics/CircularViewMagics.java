@@ -68,7 +68,7 @@ public class CircularViewMagics extends android.support.v7.widget.AppCompatImage
             outerCircleEnabled = a.getBoolean(R.styleable.CircularViewMagics_outerRingEnabled, false);
             outerCircleColor = a.getColor(R.styleable.CircularViewMagics_outerRingColor, getContext().getResources().getColor(android.R.color.white));
             outerCircleStroke = a.getDimension(R.styleable.CircularViewMagics_outerRingStroke, 0.0f);
-            cornerRadius = a.getDimension(R.styleable.CircularViewMagics_topCornersRadius, 50.0f);
+            cornerRadius = a.getDimension(R.styleable.CircularViewMagics_cornerRadius, 50.0f);
         }
         finally {
             a.recycle();
